@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\user\api;
+namespace App\Http\Controllers\User\api;
 
-use App\Http\Requests\CheckNationalCode;
 use App\Http\Resources\user\api\CodeGenerateResource;
+use App\Http\Requests\CheckNationalCode;
 use App\Http\Controllers\Controller;
-use App\Rules\user\api\NationalCode;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
 
 class CodeController extends Controller

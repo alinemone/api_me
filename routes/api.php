@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\user\api\CodeController;
+use App\Http\Controllers\User\api\CodeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
