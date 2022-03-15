@@ -73,7 +73,7 @@ copy = function() {
 check_code = function(code) {
     let error = document.getElementById("errors")
     axios.post(base_url + '/api/code/check', {
-        code: code
+        code: persianJs(code).persianNumber()._str
     })
         .then(function (res) {
             error.style.color = 'green'
@@ -106,7 +106,7 @@ function createList(spacecrafts){
 check_code_city = function (code) {
     let error = document.getElementById("errors2")
     axios.post(base_url + '/api/code/check/city', {
-        code: code
+        code: persianJs(code).persianNumber()._str
     })
         .then(function (res) {
             error.style.color = 'green'

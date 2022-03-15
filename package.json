@@ -19,6 +19,7 @@
         "sass-loader": "^12.1.0"
     },
     "dependencies": {
+        "persianjs": "^0.4.0",
         "sweetalert2": "^11.4.4"
     }
 }
