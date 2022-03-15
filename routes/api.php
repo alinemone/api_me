@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\user\api\CodeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,4 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('code')->group(function (){
+    Route::get('generate', [CodeController::class,'generate']);
+    Route::post('check', [CodeController::class,'check']);
+    Route::post('check/city', [CodeController::class,'check_city']);
 });
