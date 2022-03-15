@@ -57,17 +57,15 @@ class CodeController extends Controller
 
     public function check_city(CheckNationalCode $request)
     {
-
-
         $city_id = substr($request->post('code'), 0, 3);
 
         $code = json_decode(file_get_contents(public_path('nationalcode-location.json')), true);
 
-        $result = $code[$city_id];
-
-        if (is_null($result)){
+        if (!array_key_exists($city_id, $code)){
             return "استان و شهر کدملی در دیتابیس ثبت احوال یافت نشد!";
         }
+
+        $result = $code[$city_id];
 
         return "استان" . ' : ' . $result['province']
             . " - " . " شهر " . ' : ' . $result['city'];
