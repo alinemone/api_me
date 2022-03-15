@@ -2,7 +2,7 @@
 /**
  * open sidebar
  */
-
+let base_url = window.location.origin;
 let bars = document.querySelectorAll('.bars');
 let sideBarNav = document.querySelector('.sidebar__nav');
 let content = document.querySelector('.content');
@@ -48,7 +48,7 @@ subMenuItem.forEach((el) =>
 
 //ایجاد کد ملی
 get_code = function() {
-    axios.get('http://apime.test/api/code/generate')
+    axios.get(base_url + '/api/code/generate')
         .then(res => {
             document.getElementById('code').value = res.data['data']['code']
         })
@@ -72,7 +72,7 @@ copy = function() {
 //بررسی صحت کد ملی
 check_code = function(code) {
     let error = document.getElementById("errors")
-    axios.post('http://apime.test/api/code/check', {
+    axios.post(base_url + '/api/code/check', {
         code: code
     })
         .then(function (res) {
@@ -105,7 +105,7 @@ function createList(spacecrafts){
 // بررسی شهر کد ملی
 check_code_city = function (code) {
     let error = document.getElementById("errors2")
-    axios.post('http://apime.test/api/code/check/city', {
+    axios.post(base_url + '/api/code/check/city', {
         code: code
     })
         .then(function (res) {

@@ -6302,6 +6302,7 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 /**
  * open sidebar
  */
+var base_url = window.location.origin;
 var bars = document.querySelectorAll('.bars');
 var sideBarNav = document.querySelector('.sidebar__nav');
 var content = document.querySelector('.content');
@@ -6344,7 +6345,7 @@ subMenuItem.forEach(function (el) {
 }); //ایجاد کد ملی
 
 get_code = function get_code() {
-  axios.get('http://apime.test/api/code/generate').then(function (res) {
+  axios.get(base_url + '/api/code/generate').then(function (res) {
     document.getElementById('code').value = res.data['data']['code'];
   })["catch"](function (err) {
     return console.log(err);
@@ -6372,7 +6373,7 @@ copy = function copy() {
 
 check_code = function check_code(code) {
   var error = document.getElementById("errors");
-  axios.post('http://apime.test/api/code/check', {
+  axios.post(base_url + '/api/code/check', {
     code: code
   }).then(function (res) {
     error.style.color = 'green';
@@ -6406,7 +6407,7 @@ function createList(spacecrafts) {
 
 check_code_city = function check_code_city(code) {
   var error = document.getElementById("errors2");
-  axios.post('http://apime.test/api/code/check/city', {
+  axios.post(base_url + '/api/code/check/city', {
     code: code
   }).then(function (res) {
     error.style.color = 'green';
