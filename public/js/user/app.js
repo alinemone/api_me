@@ -6355,8 +6355,10 @@ subMenuItem.forEach(function (el) {
   $('#flexSwitchCheckDefault').change(function (event) {
     if (event.target.checked) {
       localStorage.setItem('isDarkMode', true);
+      location.reload();
     } else {
       localStorage.setItem('isDarkMode', false);
+      location.reload();
     }
   });
 
