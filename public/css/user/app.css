@@ -3125,6 +3125,10 @@ hr {
     }
 }
 
+.form-check {
+    padding-left: 3em !important;
+}
+
 /*
 * Remix Icon v2.5.0
 * https://remixicon.com

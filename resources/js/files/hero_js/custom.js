@@ -44,6 +44,39 @@ subMenuItem.forEach((el) =>
     })
 );
 
+/**
+ dark mode
+ **/
+(function($){
+
+    $(".setting_switch .lv-btn").on("change", function () {
+        this.checked ? $("body").addClass("dark-theme") : $("body").removeClass("dark-theme")
+    })
+
+    $('#flexSwitchCheckDefault').change(function (event) {
+        if (event.target.checked) {
+            localStorage.setItem('isDarkMode', true);
+        } else {
+            localStorage.setItem('isDarkMode', false);
+        }
+    })
+    function dark_mode() {
+
+        if (localStorage.getItem('isDarkMode') === 'true') {
+            document.body.classList.add("dark-theme")
+            document.getElementById('flexSwitchCheckDefault').checked = true
+        } else {
+            document.body.classList.remove("dark-theme")
+            document.getElementById('flexSwitchCheckDefault').checked = false
+        }
+    }
+
+    location.reload();
+    window.onload = dark_mode();
+
+
+})(jQuery);
+//End dark mode
 
 
 //ایجاد کد ملی

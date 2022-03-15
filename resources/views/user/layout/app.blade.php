@@ -23,6 +23,22 @@
         <div class="header__right d-flex flex-grow-1 align-items-center">
             <span class="bars"></span>
         </div>
+
+        <div class="header__left d-flex flex-end align-items-center justify-content-center">
+
+            <!--begin::Setting-->
+            <i class="ri-moon-fill"></i>
+            <div class="setting-ui position-relative" id="js-setting-ui">
+
+                <div class="form-check form-switch">
+                    <input class="form-check-input lv-btn" type="checkbox" id="flexSwitchCheckDefault">
+                    <label class="form-check-label" for="flexSwitchCheckDefault"></label>
+                </div>
+
+            </div>
+            <i class="ri-sun-fill"></i>
+            <!--end::Setting-->
+        </div>
     </div>
     <!--end::Header-->
 

@@ -3091,3 +3091,7 @@ hr {
         display: none;
     }
 }
+
+.form-check {
+    padding-left: 3em !important;
+}
