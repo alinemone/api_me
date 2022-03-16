@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\CodeController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +23,5 @@ Route::get('/', function () {
 Route::name('user.')->group(function (){
     Route::get('code',[CodeController::class,'code'])->name('code');
 });
+
+Auth::routes();

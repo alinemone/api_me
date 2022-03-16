@@ -3146,7 +3146,7 @@ hr {
   url(/fonts/remixicon.woff2?90668f6f9b3c2c18a090f132d1793c67) format("woff2"),
   url(/fonts/remixicon.woff?8d09fa11700ed63cf96e1d1c038368f3) format("woff"),
   url(/fonts/remixicon.ttf?f2616f597cf98f38d2347c9648bfe049) format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
-  url(/fonts/remixicon.svg?9cedd2150922ead848695530d71a212f#remixicon) format('svg'); /* iOS 4.1- */
+  url(/fonts/remixicon.svg?1664a258a7e7714f6f8dd840ad9fa51c#remixicon) format('svg'); /* iOS 4.1- */
   font-display: swap;
 }
 
