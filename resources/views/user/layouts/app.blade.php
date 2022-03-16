@@ -13,7 +13,7 @@
 <body>
 
 <!--begin::Sidebar-->
-@include('./user/layout.sidebar')
+@include('./user/layouts.sidebar')
 <!--end::Sidebar-->
 
 <!--begin::Content-->
