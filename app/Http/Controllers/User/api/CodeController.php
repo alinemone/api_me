@@ -12,7 +12,7 @@ class CodeController extends Controller
 {
     public function generate(): CodeGenerateResource
     {
-        $code = Cache::store('redis')->rememberForever('national', function () {
+        $code = Cache::rememberForever('national', function () {
             return json_decode(file_get_contents(public_path('nationalcode-location.json')), true);
         });
 //        $code = json_decode(file_get_contents(public_path('nationalcode-location.json')), true);
