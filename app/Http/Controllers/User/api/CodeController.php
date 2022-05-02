@@ -4,31 +4,28 @@ namespace App\Http\Controllers\User\api;
 
 use App\Http\Resources\user\api\CodeGenerateResource;
 use App\Http\Requests\CheckNationalCode;
-use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Lang;
+
 
 class CodeController extends Controller
 {
     public function generate(): CodeGenerateResource
     {
-        $code = Cache::rememberForever('national', function () {
-            return json_decode(file_get_contents(public_path('nationalcode-location.json')), true);
-        });
-//        $code = json_decode(file_get_contents(public_path('nationalcode-location.json')), true);
+        $code = json_decode(file_get_contents(public_path('nationalcode-location.json')), true);
 
         $code = rand(001, count($code) - 1);
 
-        $number_length = strlen((string)$code);
+        $number_length = strlen((string) $code);
         if ($number_length == 2) {
-            $code = 0 . $code;
-        }elseif ($number_length == 1){
-            $code = 00 . $code;
+            $code = 0 .$code;
+        } elseif ($number_length == 1) {
+            $code = 00 .$code;
         }
 
         $number = rand(100000, 999999);
 
-        $number = $code . $number;
+        $number = $code.$number;
 
         $array = str_split($number);
 
@@ -48,7 +45,7 @@ class CodeController extends Controller
             $ctrl = (11 - $result);
         }
 
-        $national_code = $number . $ctrl;
+        $national_code = $number.$ctrl;
         return new CodeGenerateResource($national_code);
     }
 
@@ -63,20 +60,17 @@ class CodeController extends Controller
     {
         $city_id = substr($request->post('code'), 0, 3);
 
-        $code = Cache::store('redis')->rememberForever('national', function () {
-            return json_decode(file_get_contents(public_path('nationalcode-location.json')), true);
-        });
+        $code = json_decode(file_get_contents(public_path('nationalcode-location.json')), true);
 
-        if (!array_key_exists($city_id, $code)){
+        if (!array_key_exists($city_id, $code)) {
             return "استان و شهر کدملی در دیتابیس ثبت احوال یافت نشد!";
         }
 
         $result = $code[$city_id];
 
-        return "استان" . ' : ' . $result['province']
-            . " - " . " شهر " . ' : ' . $result['city'];
+        return "استان".' : '.$result['province']
+            ." - "." شهر ".' : '.$result['city'];
     }
-
 
 
 }
