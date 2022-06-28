@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\User\CodeController;
+use App\Http\Controllers\User\OrderController;
+use App\Http\Controllers\User\PlanController;
+use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,14 +18,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-Route::get('/', function () {
-    return redirect('code');
+Route::middleware(['has.plan'])->get('/', function () {
+
+    dd(auth()->user()->with('order')->first());
+//    return redirect('code');
+
+
 });
 
 
 Route::name('user.')->group(function (){
     Route::get('code',[CodeController::class,'code'])->name('code');
+
 });
 
-Auth::routes();
+Route::name('user.')->middleware(['auth'])->group(function (){
+    Route::get('plans',[PlanController::class, 'index'])->name('plans');
+    Route::post('order/{plan_id}',[OrderController::class, 'buy'])->name('order.buy');
+    Route::get('order/callback',[OrderController::class, 'verify'])->name('callback');
+});
+
+
+
