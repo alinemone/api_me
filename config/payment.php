@@ -252,7 +252,7 @@ return [
             'zaringateApiPaymentUrl' => 'https://www.zarinpal.com/pg/StartPay/:authority/ZarinGate',
             'zaringateApiVerificationUrl' => 'https://ir.zarinpal.com/pg/services/WebGate/wsdl',
 
-            'mode' => 'normal', // can be normal, sandbox, zaringate
+            'mode' => (!app()->environment('production')) ? 'sandbox' : 'normal', // can be normal, sandbox, zaringate
             'merchantId' => 'b2eb963e-f1c3-11e9-a3fa-000c295eb8fc',
             'callbackUrl' => 'apime.test/callback',
             'description' => 'payment using zarinpal',
