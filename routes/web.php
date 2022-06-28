@@ -22,8 +22,7 @@ Auth::routes();
 
 Route::middleware(['has.plan'])->get('/', function () {
 
-    dd(auth()->user()->with('order')->first());
-//    return redirect('code');
+    return redirect('code');
 
 
 });
