@@ -16,6 +16,10 @@ class HasPlan
      */
     public function handle(Request $request, Closure $next)
     {
+        if (!auth()->check()){
+            return redirect('code');
+        }
+        
         $user = auth()->user()->with('order')->first();
 
         if (is_null($user->order)){
