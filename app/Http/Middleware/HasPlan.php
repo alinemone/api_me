@@ -17,7 +17,7 @@ class HasPlan
     public function handle(Request $request, Closure $next)
     {
         if (!auth()->check()){
-            return redirect('code');
+            return redirect('login');
         }
         
         $user = auth()->user()->with('order')->first();
