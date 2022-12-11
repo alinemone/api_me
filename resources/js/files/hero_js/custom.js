@@ -80,6 +80,20 @@ subMenuItem.forEach((el) =>
 })(jQuery);
 //End dark mode
 
+short_url = function(url) {
+    let error = document.getElementById("errors")
+    axios.post(base_url + '/api/url/shortener',{"url":url})
+        .then(res => {
+            document.getElementById('url').value = res.data
+        })
+        .catch(function (err) {
+
+            error.appendChild(createList("kjfdkajdfa"));
+            setTimeout(function() {
+                error.textContent = ''
+            }, 3000);
+        });
+}
 
 //ایجاد کد ملی
 get_code = function() {
@@ -91,8 +105,8 @@ get_code = function() {
 }
 onload = get_code
 //کپی تو کلیپبرد
-copy = function() {
-    let copyText = document.getElementById("code");
+copy = function(id="code") {
+    let copyText = document.getElementById(id);
     copyText.select();
     copyText.setSelectionRange(0, 99999); /* For mobile devices */
     document.execCommand("copy");

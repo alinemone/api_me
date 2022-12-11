@@ -3,6 +3,7 @@
 use App\Http\Controllers\User\CodeController;
 use App\Http\Controllers\User\OrderController;
 use App\Http\Controllers\User\PlanController;
+use App\Http\Controllers\User\ShortLinkController;
 use App\Models\Order;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Auth::routes();
 
 Route::middleware(['has.plan'])->get('/', function () {
@@ -29,8 +31,9 @@ Route::middleware(['has.plan'])->get('/', function () {
 
 
 Route::name('user.')->group(function (){
-    Route::get('code',[CodeController::class,'code'])->name('code');
-
+    Route::get('/code',[CodeController::class,'code'])->name('code');
+    Route::get('/url',[ShortLinkController::class, 'index'])->name('short.url');
+    Route::get('/{hash_id}',[ShortLinkController::class, 'redirect'])->name('short.url.redirect');
 });
 
 Route::name('user.')->middleware(['auth'])->group(function (){
