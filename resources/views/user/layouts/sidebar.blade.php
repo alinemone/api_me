@@ -9,6 +9,7 @@
         <ul>
             <li class="item-li i-dashboard"><a href="/">صفحه اصلی</a></li>
             <li class="item-li i-user-3-line"><a href="{{route('user.code')}}"> کدملی </a></li>
+            <li class="item-li i-user-3-line"><a href="{{route('user.short.url')}}"> کوتاه کننده لینک </a></li>
 {{--            <li class="item-li ri-user-3-line"><a href="{{route('user.code')}}"> کدملی</a></li>--}}
 
 {{--            <li class="item-li i-courses has-sub-ui"><a class="has-arrow-ui" href="#">دوره ها</a>--}}

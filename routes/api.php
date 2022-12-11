@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\User\api\CodeController;
+use App\Http\Controllers\User\api\ShortLinkController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,4 +24,8 @@ Route::prefix('code')->group(function (){
     Route::get('generate', [CodeController::class,'generate']);
     Route::post('check', [CodeController::class,'check']);
     Route::post('check/city', [CodeController::class,'check_city']);
+});
+
+Route::prefix('url')->group(function (){
+    Route::post('shortener', [ShortLinkController::class,'UrlShortener']);
 });
