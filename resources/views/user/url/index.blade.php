@@ -20,7 +20,7 @@
                             <div class="col-md-9">
                                 <div class="form-group">
                                     <input type="text" name="url" id="url" class="form-control" placeholder="لینک" value="">
-                                    <div id="errors"></div>
+                                    <div id="errors" class="text-danger"></div>
                                 </div>
                             </div>
                             <div class="col-md-3 p-md-2 d-flex justify-content-md-center">

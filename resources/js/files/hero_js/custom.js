@@ -84,14 +84,17 @@ short_url = function(url) {
     let error = document.getElementById("errors")
     axios.post(base_url + '/api/url/shortener',{"url":url})
         .then(res => {
+            console.log("resp" ,res)
             document.getElementById('url').value = res.data
         })
         .catch(function (err) {
+            if (err.response.status === 422){
+                document.getElementById("errors").textContent = err.response.data.message;
+                setTimeout(function() {
+                    error.textContent = ''
+                }, 3000);
+            }
 
-            error.appendChild(createList("kjfdkajdfa"));
-            setTimeout(function() {
-                error.textContent = ''
-            }, 3000);
         });
 }
 

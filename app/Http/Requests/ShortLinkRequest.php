@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\user\api\CheckUrlRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ShortLinkRequest extends FormRequest
@@ -24,7 +25,7 @@ class ShortLinkRequest extends FormRequest
     public function rules()
     {
         return [
-            "url" => ['required','url']
+            "url" => ['required','url',new CheckUrlRule()]
         ];
     }
 }

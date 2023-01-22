@@ -12,25 +12,19 @@ class ShortLinkController extends Controller
     public function UrlShortener(ShortLinkRequest $request)
     {
 
-        $link = ShortLink::create([
-            ShortLink::HASHID => $this->getRandomString(6),
-            ShortLink::LINK => $request->post('url'),
+        $link = ShortLink::firstOrNew(
+            [ShortLink::LINK => $request->post('url')],
+            [ShortLink::HASHID => $this->getRandomString(6)]
+        );
 
-        ]);
+        $link->save();
 
         return url('') .'/'. $link->{ShortLink::HASHID};
     }
 
-    function getRandomString($n)
+    function getRandomString($length)
     {
-        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $randomString = '';
-
-        for ($i = 0; $i < $n; $i++) {
-            $index = rand(0, strlen($characters) - 1);
-            $randomString .= $characters[$index];
-        }
-
-        return $randomString;
+        $str = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcefghijklmnopqrstuvwxyz';
+        return substr(str_shuffle($str), 0, $length);
     }
 }
